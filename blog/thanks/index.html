@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>You're On the List | Lanier Stained Glass Journal</title>
+  <meta name="description" content="Thanks for signing up. We'll let you know when the journal goes live." />
+  <link rel="canonical" href="https://lanierstainedglass.com/blog/thanks/" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { amethyst:{700:'#5B3A8C',900:'#2E1A47'}, violet:{500:'#8657C9'}, rose:{300:'#D9A8C9'}, amber:{500:'#D4A24C'}, marigold:{400:'#E8B85C'}, lead:{900:'#1F1A24'}, parchment:{50:'#FBF5EA'}, brass:{600:'#8C6A2F'} },
+      fontFamily: { display:['Cinzel','Georgia','serif'], body:['Inter','system-ui','sans-serif'], script:['"Cormorant Garamond"','Georgia','serif'] },
+      maxWidth:{prose:'68ch'},
+    } } };
+  </script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-parchment-50 text-lead-900 font-body antialiased">
+  <a href="#main" class="lsg-skip sr-only">Skip to content</a>
+
+  <header class="border-b border-brass-600/30 bg-parchment-50/95 backdrop-blur sticky top-0 z-40">
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/" class="font-display text-xl md:text-2xl text-amethyst-900 leading-none tracking-wide">LANIER <span class="text-amethyst-700">STAINED GLASS</span></a>
+        <nav aria-label="Primary" class="hidden md:flex gap-7 text-sm font-medium">
+          <a href="/about/"    class="hover:text-amethyst-700">About</a>
+          <a href="/services/" class="hover:text-amethyst-700">Services</a>
+          <a href="/gallery/"  class="hover:text-amethyst-700">Gallery</a>
+          <a href="/blog/"     class="hover:text-amethyst-700">Journal</a>
+          <a href="/contact/"  class="hover:text-amethyst-700">Contact</a>
+        </nav>
+        <a href="tel:+16787761325" class="hidden md:inline-block bg-amethyst-700 text-white text-sm font-semibold px-4 py-2 rounded hover:bg-violet-500 transition">(678) 776-1325</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="relative bg-amethyst-900 text-white overflow-hidden">
+      <div class="absolute inset-0 lsg-glasslight opacity-90"></div>
+      <div class="relative mx-auto max-w-3xl px-4 py-24 md:py-32 text-center">
+        <p class="text-rose-300 uppercase tracking-[0.25em] text-xs font-semibold font-display">Subscription Confirmed</p>
+        <h1 class="font-display text-5xl md:text-6xl mt-4 leading-[1.1] tracking-wide"><span class="text-marigold-400">YOU'RE ON THE LIST.</span></h1>
+        <p class="mt-8 text-xl text-rose-300">We'll let you know when the journal goes live.</p>
+        <p class="mt-3 text-sm text-rose-300/80">No marketing email — just an occasional note when there's something new from the studio.</p>
+
+        <div class="mt-12 flex flex-col items-center gap-3">
+          <a href="/" class="bg-amber-500 text-amethyst-900 font-semibold px-6 py-3 rounded hover:bg-marigold-400 transition">Return to Home Now</a>
+          <p class="text-xs text-rose-300/70">
+            Returning to home in <span id="lsg-countdown" class="font-semibold text-marigold-400">10</span>&nbsp;seconds.
+            <button type="button" id="lsg-stay" class="ml-2 underline hover:text-white">Stay on this page</button>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-amethyst-900 text-rose-300 border-t border-white/10">
+    <div class="mx-auto max-w-6xl grid md:grid-cols-3 gap-8 px-4 py-12 text-sm">
+      <div>
+        <p class="font-display text-xl text-white tracking-wide">LANIER STAINED GLASS</p>
+        <p class="mt-2 italic text-rose-300/80 font-script">"Trust in the Lord with all thine heart…" — Proverbs 3:5-6</p>
+        <p class="mt-3">Design. Repair. Historical Restoration.</p>
+        <p class="mt-1">5221 Palmero Ct</p>
+        <p>Buford, GA 30518</p>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-2">Contact</p>
+        <p><a href="tel:+16787761325" class="hover:text-white">(678) 776-1325</a></p>
+        <p><a href="mailto:LanierStainedGlass@gmail.com" class="hover:text-white break-all">LanierStainedGlass@gmail.com</a></p>
+      </div>
+      <div>
+        <p class="text-white font-semibold mb-2">Service Area</p>
+        <p>Buford · Sugar Hill · Suwanee · Flowery Branch · Lawrenceville · Atlanta</p>
+        <p class="mt-2 text-rose-300/70">Across the Southeast for church and historic restoration projects.</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-4 text-center text-xs text-rose-300/70">© <span data-year>2026</span> Lanier Stained Glass. All rights reserved.</div>
+  </footer>
+
+  <script src="/js/business.js" defer></script>
+  <script>
+    (function () {
+      var seconds = 10;
+      var countdownEl = document.getElementById('lsg-countdown');
+      var stayBtn = document.getElementById('lsg-stay');
+      var cancelled = false;
+
+      var tick = setInterval(function () {
+        if (cancelled) return;
+        seconds -= 1;
+        if (countdownEl) countdownEl.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(tick);
+          window.location.href = '/';
+        }
+      }, 1000);
+
+      function cancel() {
+        if (cancelled) return;
+        cancelled = true;
+        clearInterval(tick);
+        var note = document.createElement('span');
+        note.className = 'block mt-1 text-rose-300/70';
+        note.textContent = 'Auto-return cancelled. Use the button above whenever you\u2019re ready.';
+        if (countdownEl && countdownEl.parentNode) countdownEl.parentNode.appendChild(note);
+        if (stayBtn) stayBtn.style.display = 'none';
+      }
+
+      if (stayBtn) stayBtn.addEventListener('click', cancel);
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) cancel();
+    })();
+  </script>
+</body>
+</html>

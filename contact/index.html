@@ -107,14 +107,10 @@
 
       <!-- RIGHT: Netlify form -->
       <div class="md:col-span-3">
-        <div id="success-banner" class="hidden bg-amber-500/20 border border-amber-500 text-amethyst-900 p-4 rounded mb-6">
-          <strong>Thank you.</strong> Your message has been sent — we'll be in touch shortly.
-        </div>
-
         <h2 class="font-display text-2xl text-amethyst-900 tracking-wide">SEND A MESSAGE</h2>
         <div class="lsg-leading mt-3"></div>
 
-        <form name="contact" method="POST" action="/contact/?ok=1" data-netlify="true" netlify-honeypot="lsg-honey" class="mt-6 space-y-4">
+        <form name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="lsg-honey" class="mt-6 space-y-4">
           <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="lsg-honey" tabindex="-1" autocomplete="off" class="lsg-honey" />
 
@@ -183,12 +179,5 @@
   </footer>
 
   <script src="/js/business.js" defer></script>
-  <script>
-    // Show success banner when ?ok=1 is present (after Netlify-form submit redirect).
-    if (new URLSearchParams(location.search).get('ok') === '1') {
-      var b = document.getElementById('success-banner');
-      if (b) { b.classList.remove('hidden'); b.scrollIntoView({behavior:'smooth', block:'center'}); }
-    }
-  </script>
 </body>
 </html>
