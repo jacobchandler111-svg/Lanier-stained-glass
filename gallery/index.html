@@ -98,13 +98,11 @@
       <p class="text-center text-sm text-lead-900/70 mt-2">Browse by project type — click any photo to view it full-size.</p>
       <div class="lsg-leading mt-3"></div>
 
-      <!-- FILTER BAR -->
+      <!-- FILTER BAR — toggle any combination. All start selected. -->
       <div class="lsg-filter-bar mt-8" role="toolbar" aria-label="Filter projects by type">
-        <button type="button" class="lsg-filter-btn is-active" data-filter="all">All <span class="lsg-filter-count">20</span></button>
-        <button type="button" class="lsg-filter-btn"           data-filter="church">Churches <span class="lsg-filter-count">9</span></button>
-        <button type="button" class="lsg-filter-btn"           data-filter="home">Homes <span class="lsg-filter-count">8</span></button>
-        <button type="button" class="lsg-filter-btn"           data-filter="custom">Custom Designs <span class="lsg-filter-count">3</span></button>
-        <button type="button" class="lsg-filter-btn"           data-filter="business">Businesses <span class="lsg-filter-count">0</span></button>
+        <button type="button" class="lsg-filter-btn is-active" data-filter="church"   aria-pressed="true">Churches <span class="lsg-filter-count">9</span></button>
+        <button type="button" class="lsg-filter-btn is-active" data-filter="home"     aria-pressed="true">Homes <span class="lsg-filter-count">11</span></button>
+        <button type="button" class="lsg-filter-btn is-active" data-filter="business" aria-pressed="true">Businesses <span class="lsg-filter-count">0</span></button>
       </div>
 
       <!-- EMPTY STATE (shown when a filter has no results) -->
@@ -200,17 +198,17 @@
         </figure>
 
         <!-- CUSTOM DESIGNS (3) -->
-        <figure data-cat="custom" class="border border-brass-600/30 bg-white rounded overflow-hidden">
+        <figure data-cat="home" class="border border-brass-600/30 bg-white rounded overflow-hidden">
           <img src="/assets/photos/custom-modern-abstract.jpg" alt="Modern abstract leaded glass commission with mirrors and textured glass" class="lsg-zoomable w-full h-full object-cover" style="aspect-ratio:4/5;" loading="lazy" />
           <figcaption class="p-3 text-xs"><strong class="font-display text-amethyst-900 block tracking-wide">MODERN ABSTRACT</strong>Custom commission</figcaption>
         </figure>
 
-        <figure data-cat="custom" class="border border-brass-600/30 bg-white rounded overflow-hidden">
+        <figure data-cat="home" class="border border-brass-600/30 bg-white rounded overflow-hidden">
           <img src="/assets/photos/leaded-moorish-geometric.jpg" alt="Geometric Moorish-pattern clear leaded glass window" class="lsg-zoomable w-full h-full object-cover" style="aspect-ratio:4/5;" loading="lazy" />
           <figcaption class="p-3 text-xs"><strong class="font-display text-amethyst-900 block tracking-wide">MOORISH PATTERN</strong>Custom leaded panel</figcaption>
         </figure>
 
-        <figure data-cat="custom" class="border border-brass-600/30 bg-white rounded overflow-hidden">
+        <figure data-cat="home" class="border border-brass-600/30 bg-white rounded overflow-hidden">
           <img src="/assets/photos/custom-geometric-circles.jpg" alt="Custom leaded glass with geometric circles and amber accents" class="lsg-zoomable w-full h-full object-cover" style="aspect-ratio:4/5;" loading="lazy" />
           <figcaption class="p-3 text-xs"><strong class="font-display text-amethyst-900 block tracking-wide">GEOMETRIC CIRCLES</strong>Custom commission</figcaption>
         </figure>
