@@ -8,14 +8,16 @@ window.LSG_BUSINESS = {
   phone: '(678) 776-1325',
   phoneTel: '+16787761325',
   email: 'LanierStainedGlass@gmail.com',
+  street: '5221 Palmero Ct',
   city: 'Buford',
   state: 'GA',
-  street: 'TBD',
+  zip: '30518',
   hours: 'By appointment',
   yearsInBusiness: '20+',
   url: 'https://lanierstainedglass.com',
   serviceTagline:
     'Design to Installation \u00b7 Stained Leaded Glass \u00b7 Church Restoration \u00b7 Residential Repair \u00b7 Historic Window Restorations',
+  regionalCoverage: 'Across the Southeast for church and historic restoration projects',
   services: [
     { slug: 'custom-design',                 title: 'Custom Design',                 blurb: 'Original commissioned panels, designed with you from sketch to install.' },
     { slug: 'stained-leaded-glass',          title: 'Stained Leaded Glass',          blurb: 'Traditional leaded panels for doors, transoms, and feature windows.' },
