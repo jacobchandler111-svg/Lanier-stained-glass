@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E1A47"/>
+      <stop offset="0.6" stop-color="#5B3A8C"/>
+      <stop offset="1" stop-color="#8657C9"/>
+    </linearGradient>
+    <radialGradient id="light" cx="50%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#E8B85C" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#E8B85C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#light)"/>
+  <g stroke="#8C6A2F" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M120,560 L120,260 A180,180 0 0 1 480,260 L480,560 Z"/>
+    <path d="M520,560 L520,260 A180,180 0 0 1 880,260 L880,560 Z"/>
+    <path d="M920,560 L920,260 A180,180 0 0 1 1280,260 L1280,560 Z"/>
+    <line x1="300" y1="100" x2="300" y2="560"/>
+    <line x1="700" y1="100" x2="700" y2="560"/>
+    <line x1="1100" y1="100" x2="1100" y2="560"/>
+  </g>
+  <g fill="#E8B85C" stroke="#8C6A2F" stroke-width="2">
+    <circle cx="300" cy="220" r="32"/>
+    <circle cx="700" cy="220" r="32"/>
+    <circle cx="1100" cy="220" r="32"/>
+  </g>
+  <text x="60" y="120" font-family="Georgia, serif" font-size="36" fill="#D9A8C9" letter-spacing="6">BUFORD, GEORGIA</text>
+  <text x="60" y="200" font-family="Georgia, serif" font-weight="700" font-size="84" fill="#FBF5EA" letter-spacing="4">LANIER STAINED GLASS</text>
+  <text x="60" y="600" font-family="Georgia, serif" font-size="28" fill="#D9A8C9">Design · Repair · Historic Restoration</text>
+</svg>

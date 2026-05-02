@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lanierstainedglass.com/sitemap.xml

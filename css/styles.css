@@ -1,0 +1,126 @@
+/* Lanier Stained Glass — site styles
+ * Tailwind handles 95% of the look (loaded via CDN with inline config).
+ * This file holds: font defaults, decorative motifs, and bits Tailwind can't express cleanly. */
+
+:root {
+  --amethyst-900: #2E1A47;
+  --amethyst-700: #5B3A8C;
+  --violet-500:   #8657C9;
+  --rose-300:     #D9A8C9;
+  --amber-500:    #D4A24C;
+  --marigold-400: #E8B85C;
+  --lead-900:     #1F1A24;
+  --parchment-50: #FBF5EA;
+  --brass-600:    #8C6A2F;
+}
+
+html { scroll-behavior: smooth; }
+body { font-feature-settings: "kern", "liga"; }
+
+/* Gothic-arch image mask used on hero/featured photos. */
+.lsg-arch {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M0,125 L0,50 A50,50 0 0,1 100,50 L100,125 Z' fill='black'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125' preserveAspectRatio='none'><path d='M0,125 L0,50 A50,50 0 0,1 100,50 L100,125 Z' fill='black'/></svg>");
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+
+/* Brass divider — a thin gold line that suggests came/leading between panels. */
+.lsg-leading {
+  background: linear-gradient(90deg, transparent, rgba(140,106,47,0.6), transparent);
+  height: 1px;
+}
+
+/* Stained-glass-light radial wash for hero backgrounds. */
+.lsg-glasslight {
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(216,168,201,0.25), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(212,162,76,0.18), transparent 60%);
+}
+
+/* Faux stained-glass tile — used as a placeholder until real photos arrive.
+ * Each tile gets a slightly varied set of jewel-toned stops. */
+.lsg-tile {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(216,168,201,0.55), transparent 55%),
+    radial-gradient(ellipse at 75% 30%, rgba(232,184,92,0.45), transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(134,87,201,0.55), transparent 60%),
+    linear-gradient(135deg, #2E1A47 0%, #5B3A8C 45%, #D4A24C 100%);
+  overflow: hidden;
+}
+.lsg-tile::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(31,26,36,0.55) 1px, transparent 1px),
+    linear-gradient(0deg,  rgba(31,26,36,0.55) 1px, transparent 1px);
+  background-size: 33% 25%;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.lsg-tile::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 35%, rgba(255,240,200,0.25), transparent 50%);
+  pointer-events: none;
+}
+
+/* Variant tones so a grid of placeholders doesn't look identical. */
+.lsg-tile.tone-amethyst { background:
+    radial-gradient(ellipse at 30% 20%, rgba(216,168,201,0.5),  transparent 55%),
+    radial-gradient(ellipse at 70% 70%, rgba(232,184,92,0.35), transparent 60%),
+    linear-gradient(135deg, #2E1A47 0%, #5B3A8C 70%, #8657C9 100%); }
+.lsg-tile.tone-rose     { background:
+    radial-gradient(ellipse at 30% 30%, rgba(255,210,230,0.6), transparent 55%),
+    radial-gradient(ellipse at 70% 70%, rgba(212,162,76,0.4),  transparent 60%),
+    linear-gradient(135deg, #5B3A8C 0%, #D9A8C9 60%, #E8B85C 100%); }
+.lsg-tile.tone-amber    { background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,235,180,0.7), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(134,87,201,0.45), transparent 60%),
+    linear-gradient(135deg, #2E1A47 0%, #D4A24C 70%, #E8B85C 100%); }
+.lsg-tile.tone-violet   { background:
+    radial-gradient(ellipse at 30% 30%, rgba(180,150,230,0.55), transparent 55%),
+    radial-gradient(ellipse at 70% 70%, rgba(216,168,201,0.4),  transparent 60%),
+    linear-gradient(135deg, #2E1A47 0%, #8657C9 60%, #D9A8C9 100%); }
+
+/* Pull-quote styling — softer than a plain blockquote. */
+.lsg-quote {
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--amber-500);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--lead-900);
+}
+
+/* Skip link gets visible on focus. */
+.lsg-skip:focus {
+  position: absolute; top: 0.5rem; left: 0.5rem; z-index: 100;
+  padding: 0.5rem 0.75rem;
+  background: var(--amethyst-900); color: #fff;
+  border-radius: 4px;
+}
+
+/* Honeypot for Netlify forms — hidden from humans, visible to bots. */
+.lsg-honey { position: absolute; left: -9999px; }
+
+/* Reduce motion for users who prefer it. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Mobile: Cinzel + tracking-wide overflows narrow viewports.
+ * Scale hero h1 down and tighten letter-spacing under 640px. */
+@media (max-width: 639px) {
+  main h1 {
+    font-size: 1.875rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.01em !important;
+  }
+  main h1 .text-2xl { font-size: 1rem !important; }
+  main h1 .text-3xl { font-size: 1.25rem !important; }
+}
