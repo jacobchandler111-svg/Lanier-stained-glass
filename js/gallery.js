@@ -111,6 +111,7 @@
       '<div id="lsg-lightbox-caption">' +
         '<span id="lsg-lightbox-text"></span>' +
         '<span id="lsg-lightbox-counter"></span>' +
+        '<span id="lsg-lightbox-hint">← → to navigate · Esc to close</span>' +
       '</div>' +
     '</div>' +
     '<button class="lsg-lightbox-btn lsg-lightbox-next" aria-label="Next photo">›</button>';
@@ -124,17 +125,45 @@
   var lbNext    = overlay.querySelector('.lsg-lightbox-next');
   var lbCard    = overlay.querySelector('#lsg-lightbox-card');
 
+  function pad(n, total) {
+    var w = String(total).length;
+    var s = String(n);
+    while (s.length < w) s = '0' + s;
+    return s;
+  }
+
+  // Preload an image at a given index (no-op if out of range)
+  function preload(idx) {
+    if (visibleTriggers.length === 0) return;
+    var i = ((idx % visibleTriggers.length) + visibleTriggers.length) % visibleTriggers.length;
+    var src = visibleTriggers[i].src;
+    if (!src) return;
+    var p = new Image();
+    p.src = src;
+  }
+
   function show(idx) {
     if (visibleTriggers.length === 0) return;
     currentIdx = ((idx % visibleTriggers.length) + visibleTriggers.length) % visibleTriggers.length;
     var img = visibleTriggers[currentIdx];
-    lbImg.src = img.src;
-    lbImg.alt = img.alt || '';
+    // Crossfade: dim, swap, restore on load
+    lbImg.classList.add('is-loading');
+    var newImg = new Image();
+    newImg.onload = function () {
+      lbImg.src = newImg.src;
+      lbImg.alt = img.alt || '';
+      lbImg.classList.remove('is-loading');
+    };
+    newImg.onerror = function () { lbImg.classList.remove('is-loading'); };
+    newImg.src = img.src;
     lbText.textContent = img.alt || '';
-    lbCounter.textContent = (currentIdx + 1) + ' / ' + visibleTriggers.length;
+    lbCounter.textContent = pad(currentIdx + 1, visibleTriggers.length) + ' / ' + pad(visibleTriggers.length, visibleTriggers.length);
     var multi = visibleTriggers.length > 1;
     lbPrev.style.display = multi ? '' : 'none';
     lbNext.style.display = multi ? '' : 'none';
+    // Preload neighbors so prev/next feels instant
+    preload(currentIdx + 1);
+    preload(currentIdx - 1);
   }
 
   function open(triggerImg) {

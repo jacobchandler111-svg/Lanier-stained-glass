@@ -173,6 +173,45 @@ body { font-feature-settings: "kern", "liga"; }
 }
 .lsg-filter-empty.is-shown { display: block; }
 
+/* ===== GALLERY THUMBNAILS (hover affordance) =====
+ * Each <figure> in the filter grid that contains an .lsg-zoomable image
+ * gets a subtle hover state: gentle zoom on the image + magnifier icon
+ * fade-in over a darkening overlay so the click target is obvious. */
+figure[data-cat] {
+  position: relative;
+  isolation: isolate;
+}
+figure[data-cat] img.lsg-zoomable {
+  transition: transform 0.4s ease, filter 0.3s ease;
+  display: block;
+}
+figure[data-cat]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  bottom: auto;
+  height: var(--lsg-img-h, 100%);
+  background:
+    radial-gradient(circle at center, rgba(46, 26, 71, 0.0) 50%, rgba(46, 26, 71, 0.35) 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='44' height='44' fill='none' stroke='white' stroke-width='1.6'><circle cx='10.5' cy='10.5' r='6.5'/><line x1='15.2' y1='15.2' x2='20' y2='20'/></svg>") no-repeat center;
+  background-size: cover, 44px 44px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+figure[data-cat]:hover::after,
+figure[data-cat]:focus-within::after { opacity: 1; }
+figure[data-cat]:hover img.lsg-zoomable {
+  transform: scale(1.04);
+  filter: brightness(0.95);
+}
+@media (prefers-reduced-motion: reduce) {
+  figure[data-cat] img.lsg-zoomable,
+  figure[data-cat]::after { transition: none; }
+  figure[data-cat]:hover img.lsg-zoomable { transform: none; }
+}
+
 /* ===== LIGHTBOX =====
  * Mobile: full-bleed dark overlay with the image filling the screen.
  * Desktop (>=768px): centered parchment-card modal, arrows in the dim
@@ -189,8 +228,15 @@ body.lsg-no-scroll { overflow: hidden; }
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
 }
-#lsg-lightbox.is-open { display: flex; }
+#lsg-lightbox.is-open { display: flex; opacity: 1; }
+#lsg-lightbox-img { transition: opacity 0.18s ease; }
+#lsg-lightbox-img.is-loading { opacity: 0.35; }
+@media (prefers-reduced-motion: reduce) {
+  #lsg-lightbox, #lsg-lightbox-img { transition: none; }
+}
 
 #lsg-lightbox-card {
   position: relative;
@@ -222,10 +268,21 @@ body.lsg-no-scroll { overflow: hidden; }
   display: block;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   opacity: 0.7;
   margin-top: 0.4rem;
+  font-variant-numeric: tabular-nums;
 }
+#lsg-lightbox-hint {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
+  margin-top: 0.5rem;
+  text-transform: none;
+}
+@media (max-width: 767px) { #lsg-lightbox-hint { display: none; } }
 
 .lsg-lightbox-btn {
   position: absolute;
