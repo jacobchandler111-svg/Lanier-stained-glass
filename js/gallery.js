@@ -75,6 +75,19 @@
     });
   });
 
+  // Deep-link support: /gallery/?cat=church (or home, business) lands with
+  // that single filter pre-selected. Useful when other pages link visitors
+  // straight to a category (e.g. the homepage "Browse by type" tiles).
+  if (filterButtons.length > 0) {
+    var cat = new URLSearchParams(window.location.search).get('cat');
+    var validCats = allCategories;
+    if (cat && validCats.indexOf(cat) !== -1) {
+      activeSet = new Set([cat]);
+      firstClick = true;
+      applyFilter();
+    }
+  }
+
   // ============================================================
   // LIGHTBOX
   //
