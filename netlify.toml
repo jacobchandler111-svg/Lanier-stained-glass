@@ -39,17 +39,25 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# CSS and JS use stable filenames (no content hash), so they MUST revalidate
+# on every request — otherwise updates are invisible to returning visitors
+# for the entire max-age window. Browsers will keep the file cached but
+# always check the ETag (cheap), and only re-download on actual change.
 [[headers]]
   for = "/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
+# Photos and other assets keep aggressive caching since their content
+# rarely changes for a given filename. Drop "immutable" so we still have
+# an escape hatch (long cache but not "never check"); content updates
+# should rename the file anyway.
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=2592000, must-revalidate"
