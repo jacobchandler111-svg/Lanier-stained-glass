@@ -217,14 +217,25 @@ figure[data-cat]:hover img.lsg-zoomable {
  * Desktop (>=768px): centered parchment-card modal, arrows in the dim
  * backdrop on either side of the card. Click backdrop or Esc to close. */
 img.lsg-zoomable { cursor: zoom-in; }
-body.lsg-no-scroll { overflow: hidden; }
+/* Scroll lock: pin body in place so the page doesn't visibly jump when the
+ * lightbox opens. JS sets top:-{scrollY}px and width:100% along with this
+ * class, then restores scroll position on close. */
+body.lsg-no-scroll {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
 
 #lsg-lightbox {
   position: fixed;
   inset: 0;
   z-index: 1000;
   display: none;
-  background: rgba(31, 26, 36, 0.94);
+  /* Lighter backdrop so the page is faintly visible behind — feels like a
+   * floating popup rather than a heavy full-screen takeover. */
+  background: rgba(31, 26, 36, 0.62);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   align-items: center;
   justify-content: center;
   padding: 1rem;

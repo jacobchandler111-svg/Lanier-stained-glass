@@ -166,21 +166,41 @@
     preload(currentIdx - 1);
   }
 
+  // Scroll-lock state: store the scroll position on open so we can restore it on close.
+  // Using position:fixed on body (per CSS) prevents the page from visibly jumping.
+  var lockedScrollY = 0;
+
+  function lockBodyScroll() {
+    lockedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.style.top = '-' + lockedScrollY + 'px';
+    document.body.classList.add('lsg-no-scroll');
+  }
+
+  function unlockBodyScroll() {
+    document.body.classList.remove('lsg-no-scroll');
+    document.body.style.top = '';
+    // Restore exact scroll position the user was at.
+    window.scrollTo(0, lockedScrollY);
+  }
+
   function open(triggerImg) {
     rebuildLightboxList();
     var idx = visibleTriggers.indexOf(triggerImg);
     if (idx < 0) return;
     show(idx);
+    lockBodyScroll();
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('lsg-no-scroll');
-    lbClose.focus();
+    // Focus the overlay itself (a fixed element) so keyboard nav works without
+    // the browser trying to scroll a focused button into view.
+    overlay.tabIndex = -1;
+    overlay.focus({ preventScroll: true });
   }
 
   function close() {
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('lsg-no-scroll');
+    unlockBodyScroll();
     lbImg.src = '';
   }
 
